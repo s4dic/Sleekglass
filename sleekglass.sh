@@ -5,6 +5,9 @@
 #pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY "/home/home/mega/code/looking-glass-client/sleekglass.sh"
 #looking-glass-client -c 127.0.0.1 -p 5900
 
+#restore permissions
+ssh root@localhost 'chmod 557 /dev/shm/looking-glass'
+
 #define root user folder
 dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 #get current user
@@ -112,6 +115,7 @@ function startstream {
 	pid=$! 2> /dev/null
 	#windows flox
 	echo "executed command: looking-glass-client -c $IP -p $Port $Fullscreen $Showfps $Borderless -K $FPSlimit $mousekeyboard $mouseaboseLGwindows"
+	echo "Command: /usr/local/bin/looking-glass-client -c $IP -p $Port $Fullscreen2 $Showfps2 $Borderless2 $FPSlimit $mousekeyboard2 $mouseaboseLGwindows2"
 	/usr/local/bin/looking-glass-client -c $IP -p $Port $Fullscreen2 $Showfps2 $Borderless2 $FPSlimit $mousekeyboard2 $mouseaboseLGwindows2 &
 	pid=$!
 }
